@@ -6,118 +6,22 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
-//-------------------------------------------Classic gradient-------------------------------------------\\
-
-// void main() {
-//     // this gives us the position of a single pixel on the screen
-//     vec2 st = gl_FragCoord.xy/u_resolution;
-
-//     // we'll just store the x coordinae in a float variable named xCoord
-//     float xCoord = st.x;
-
-//     // define a color variable to 
-//     vec3 color = vec3(xCoord);
-
-
-//     /*
-//         So from left to right, starting form the bottom left corner, each pixel will render
-//         each color channel with the value of x
-//     */
-
-//     gl_FragColor = vec4(color, 1.0);
-// }
-
-//-------------------------------------------Using pow() function-------------------------------------------\\
-
-// void main() {
-//     // this gives us the position of a single pixel on the screen
-//     vec2 st = gl_FragCoord.xy/u_resolution;
-
-//     // This time we want to raise the x coordinate value to the power of 5
-//     float xCoord = pow(st.x, 5.0);
-
-//     // define a color variable with the xCoord value
-//     vec3 color = vec3(xCoord);
-
-
-//     /*
-//         So from left to right, starting form the bottom left corner, each pixel will render
-//         each color channel with the value of x, in this case the value of x has been raised to
-//         the power of 5
-//     */
-
-//     gl_FragColor = vec4(color, 1.0);
-// }
-
-//-------------------------------------------Using step()-------------------------------------------\\
-
-// void main() {
-//     // this gives us the position of a single pixel on the screen
-//     vec2 st = gl_FragCoord.xy/u_resolution;
-
-//     // Step will return 0.0 unless the value is over 0.5, else it will return 1.0
-//     // Used for when we want to eliminate gradients or inbetween values
-//     float xCoord = step(0.5, st.x);
-
-//     // define a color variable with the xCoord value
-//     vec3 color = vec3(xCoord);
-
-
-//     /*
-//         So from left to right, starting form the bottom left corner, each pixel will render
-//         each color channel with the value of x, in this case the value of x has been raised to
-//         the power of 5
-//     */
-
-//     gl_FragColor = vec4(color, 1.0);
-// }
-
-//-------------------------------------------Using smoothstep()-------------------------------------------\\
-
-// void main() {
-//     // this gives us the position of a single pixel on the screen
-//     vec2 st = gl_FragCoord.xy/u_resolution;
-
-//     /*
-//         Smoothstep only gives us a gradeint (interpolated values) between a defined range, everything that falls outside
-//         will be 0.0 if lower, or 1.0 if higher than the defined bounds
-//     */
-
-//     float xCoord = smoothstep(0.2, 0.5, st.x);
-
-//     // define a color variable with the xCoord value
-//     vec3 color = vec3(xCoord);
-
-
-//     /*
-//         So from left to right, starting form the bottom left corner, each pixel will render
-//         each color channel with the value of x, in this case the value of x has been raised to
-//         the power of 5
-//     */
-
-//     gl_FragColor = vec4(color, 1.0);
-// }
-
 //-------------------------------------------Char Styles example-------------------------------------------\\
 
 // Classic Perlin 3D Noise 
 // by Stefan Gustavson
 //
-vec4 permute(vec4 x)
-{
+vec4 permute(vec4 x) {
     return mod(((x*34.0)+1.0)*x, 289.0);
 }
-vec4 taylorInvSqrt(vec4 r)
-{
+vec4 taylorInvSqrt(vec4 r) {
     return 1.79284291400159 - 0.85373472095314 * r;
 }
-vec3 fade(vec3 t)
-{
+vec3 fade(vec3 t) {
     return t*t*t*(t*(t*6.0-15.0)+10.0);
 }
 
-float cnoise(vec3 P)
-{
+float cnoise(vec3 P) {
     vec3 Pi0 = floor(P); // Integer part for indexing
     vec3 Pi1 = Pi0 + vec3(1.0); // Integer part + 1
     Pi0 = mod(Pi0, 289.0);
@@ -185,8 +89,95 @@ float cnoise(vec3 P)
     return 2.2 * n_xyz;
 }
 
-void main(void)
-{
+void main() {
+
+
+//-------------------------------------------Classic gradient-------------------------------------------\\
+
+//     // this gives us the position of a single pixel on the screen
+//     vec2 st = gl_FragCoord.xy/u_resolution;
+
+//     // we'll just store the x coordinae in a float variable named xCoord
+//     float xCoord = st.x;
+
+//     // define a color variable to 
+//     vec3 color = vec3(xCoord);
+
+
+//     /*
+//         So from left to right, starting form the bottom left corner, each pixel will render
+//         each color channel with the value of x
+//     */
+
+//     gl_FragColor = vec4(color, 1.0);
+
+//-------------------------------------------Using pow() function-------------------------------------------\\
+
+//     // this gives us the position of a single pixel on the screen
+//     vec2 st = gl_FragCoord.xy/u_resolution;
+
+//     // This time we want to raise the x coordinate value to the power of 5
+//     float xCoord = pow(st.x, 5.0);
+
+//     // define a color variable with the xCoord value
+//     vec3 color = vec3(xCoord);
+
+
+//     /*
+//         So from left to right, starting form the bottom left corner, each pixel will render
+//         each color channel with the value of x, in this case the value of x has been raised to
+//         the power of 5
+//     */
+
+//     gl_FragColor = vec4(color, 1.0);
+
+//-------------------------------------------Using step()-------------------------------------------\\
+
+//     // this gives us the position of a single pixel on the screen
+//     vec2 st = gl_FragCoord.xy/u_resolution;
+
+//     // Step will return 0.0 unless the value is over 0.5, else it will return 1.0
+//     // Used for when we want to eliminate gradients or inbetween values
+//     float xCoord = step(0.5, st.x);
+
+//     // define a color variable with the xCoord value
+//     vec3 color = vec3(xCoord);
+
+
+//     /*
+//         So from left to right, starting form the bottom left corner, each pixel will render
+//         each color channel with the value of x, in this case the value of x has been raised to
+//         the power of 5
+//     */
+
+//     gl_FragColor = vec4(color, 1.0);
+
+//-------------------------------------------Using smoothstep()-------------------------------------------\\
+
+//     // this gives us the position of a single pixel on the screen
+//     vec2 st = gl_FragCoord.xy/u_resolution;
+
+//     /*
+//         Smoothstep only gives us a gradeint (interpolated values) between a defined range, everything that falls outside
+//         will be 0.0 if lower, or 1.0 if higher than the defined bounds
+//     */
+
+//     float xCoord = smoothstep(0.2, 0.5, st.x);
+
+//     // define a color variable with the xCoord value
+//     vec3 color = vec3(xCoord);
+
+
+//     /*
+//         So from left to right, starting form the bottom left corner, each pixel will render
+//         each color channel with the value of x, in this case the value of x has been raised to
+//         the power of 5
+//     */
+
+//     gl_FragColor = vec4(color, 1.0);
+
+//-------------------------------------------Char stiles example-------------------------------------------\\
+
     vec2 normCoord = gl_FragCoord.xy/u_resolution;
     
     float time = u_time/2.0; //slow down time
