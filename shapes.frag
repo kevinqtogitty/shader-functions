@@ -6,9 +6,11 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
+void main() {
+
+
 //-------------------------------------------Making a square-------------------------------------------\\
 
-// void main() {
 //     vec2 st = gl_FragCoord.xy/u_resolution.xy;
 //     vec3 color = vec3(0.0);
 
@@ -36,11 +38,9 @@ uniform float u_time;
 //     color = vec3( bl * tl);
 
 //     gl_FragColor = vec4(color,1.0);
-// }
 
 // //-------------------------------------------Making a rectangle-------------------------------------------\\
 
-// void main() {
 //     vec2 st = gl_FragCoord.xy/u_resolution.xy;
 //     vec3 color = vec3(0.0);
 
@@ -54,11 +54,9 @@ uniform float u_time;
 //     color = vec3( left * bottom * top * right);
 
 //     gl_FragColor = vec4(color,1.0);
-// }
 
 //-------------------------------------------Making a circle 2 ways-------------------------------------------\\
 
-void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     float time = u_time;
 
